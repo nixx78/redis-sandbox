@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>lv.nixx.poc</groupId>
-    <artifactId>redis-sandbox</artifactId>
+    <artifactId>redis-samples</artifactId>
     <version>1.0.0-SHANPSHOT</version>
     <packaging>jar</packaging>
 

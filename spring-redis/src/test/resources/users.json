@@ -1,0 +1,26 @@
+[
+  {
+    "name": "User1",
+    "email": "email@email.com",
+    "roles": [
+      {
+        "id": "R1",
+        "name": "ROLE1"
+      }
+    ]
+  },
+  {
+    "name": "User2",
+    "email": "email@email.com",
+    "roles": [
+      {
+        "id": "R1",
+        "name": "ROLE1"
+      },
+      {
+        "id": "R2",
+        "name": "ROLE2"
+      }
+    ]
+  }
+]

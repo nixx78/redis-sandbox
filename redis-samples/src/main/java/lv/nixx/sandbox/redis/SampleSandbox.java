@@ -30,11 +30,19 @@ public class SampleSandbox {
                     "newField", "NewField.Value"
             ));
 
+            System.out.println("DB size:" + jedis.dbSize());
+
             System.out.println("User from Redis: " + jedis.hgetAll(USER_1001_KEY));
 
             // Удалим все данных связанные с ключем
             jedis.del(USER_1001_KEY);
+            jedis.flushDB();
+
+            System.out.println("DB size:" + jedis.dbSize());
+            System.out.println("User from Redis after delete: " + jedis.hgetAll(USER_1001_KEY));
         }
+
+        //TODO https://redis.io/learn/develop/java/redis-and-spring-course
 
     }
 
