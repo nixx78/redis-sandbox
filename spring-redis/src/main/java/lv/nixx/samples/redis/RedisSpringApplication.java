@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 //TODO Implement paging sample
-//TODO https://redis.io/learn/develop/java/redis-and-spring-course/lesson_5
+//TODO https://redis.io/learn/develop/java/redis-and-spring-course/lesson_6
 
 @SpringBootApplication
 public class RedisSpringApplication {
