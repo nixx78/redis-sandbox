@@ -1,4 +1,4 @@
-package lv.nixx.samples.redis;
+package lv.nixx.cache.redis.string;
 
 import lombok.Data;
 

@@ -1,11 +1,11 @@
-package lv.nixx.samples.redis;
+package lv.nixx.cache.redis.string;
 
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
 @RestController
-@RequestMapping("/sandbox")
+@RequestMapping("/keyvalue")
 public class ControllerForSlowService {
 
     private final MySlowService mySlowService;

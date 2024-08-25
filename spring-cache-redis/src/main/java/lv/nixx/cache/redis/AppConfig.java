@@ -1,4 +1,4 @@
-package lv.nixx.samples.redis;
+package lv.nixx.cache.redis;
 
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
