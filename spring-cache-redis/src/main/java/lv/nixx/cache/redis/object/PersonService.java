@@ -21,10 +21,8 @@ public class PersonService {
 
     private final Map<String, Person> storage = new HashMap<>();
 
-    @CachePut(value = CACHE_NAME, key = "#newPerson.id")
+    @CachePut(value = CACHE_NAME, key = "#result.id")
     public Person add(Person newPerson) {
-        //TODO how to pass null key and use id from returned value?
-
         String id = UUID.randomUUID().toString();
         storage.put(id, newPerson);
 
