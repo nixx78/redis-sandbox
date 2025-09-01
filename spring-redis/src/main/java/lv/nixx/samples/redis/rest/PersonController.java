@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
@@ -61,8 +62,8 @@ public class PersonController {
     public void uploadBulk() {
         repository.deleteAll();
 
-        repository.saveAll(LongStream.range(0, 100)
-                .mapToObj(i -> new Person(i, "Name_" + i))
+        repository.saveAll(LongStream.range(0, 10)
+                .mapToObj(i -> new Person(i, "Name_" + i, LocalDate.parse("2025-01-02")))
                 .toList()
         );
     }

@@ -3,7 +3,6 @@ package lv.nixx.samples.redis;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-//TODO Implement paging sample
 //TODO https://redis.io/learn/develop/java/redis-and-spring-course/lesson_6
 
 @SpringBootApplication
