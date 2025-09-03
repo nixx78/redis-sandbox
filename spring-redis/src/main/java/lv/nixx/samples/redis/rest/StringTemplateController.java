@@ -1,6 +1,6 @@
 package lv.nixx.samples.redis.rest;
 
-import lv.nixx.samples.redis.Picture;
+import lv.nixx.samples.redis.model.Picture;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;

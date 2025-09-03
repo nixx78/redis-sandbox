@@ -1,4 +1,4 @@
-package lv.nixx.samples.redis;
+package lv.nixx.samples.redis.model;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
