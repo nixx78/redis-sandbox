@@ -1,4 +1,4 @@
-package lv.nixx.sandbox.redis;
+package lv.nixx.samples.redis.basic;
 
 import redis.clients.jedis.Jedis;
 

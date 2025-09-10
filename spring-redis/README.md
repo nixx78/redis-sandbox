@@ -7,6 +7,8 @@ Swagger endpoint: http://localhost:8080/swagger-ui.html
 * Использование простого объекта - Person
 * Использование связанных объектов User(1) -> Role(n)
 * Поиск данных по полю (использование @Indexed)
+* Работа с Redis используя библиотеку Jedis
+
 
 ## Тестовые данные 
 * test/resources
