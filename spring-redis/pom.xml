@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.2</version>
+        <version>3.5.5</version>
     </parent>
 
     <groupId>lv.nixx.samples</groupId>
@@ -62,7 +62,7 @@
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>5.1.4</version>
+            <version>6.2.0</version>
         </dependency>
 
     </dependencies>
