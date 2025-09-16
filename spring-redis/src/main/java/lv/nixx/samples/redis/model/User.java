@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Reference;
 import org.springframework.data.redis.core.RedisHash;
@@ -18,6 +19,7 @@ import java.util.Set;
 @ToString(onlyExplicitlyIncluded = true)
 @Data
 @RedisHash("user")
+@Accessors(chain = true)
 public class User {
 
     @Id
