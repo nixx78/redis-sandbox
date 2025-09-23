@@ -35,7 +35,8 @@ public class HashUsageSampleSandbox {
                     "fieldToDelete", "FieldToDelete.Value"
             ));
 
-            System.out.println("User from Redis (after new fields add): " + jedis.hgetAll(USER_1001_KEY));
+            Map<String, String> stringStringMap = jedis.hgetAll(USER_1001_KEY);
+            System.out.println("User from Redis (after new fields add): " + stringStringMap);
 
             //Update existing field
             jedis.hset(USER_1001_KEY, Map.of(

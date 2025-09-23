@@ -24,7 +24,12 @@ public class UserController {
         return repository.findAll();
     }
 
-    @GetMapping("/{userName}")
+    @GetMapping("/{id}")
+    public User findById(String id) {
+        return repository.findById(id).orElseThrow(() -> new IllegalArgumentException("User with id [" + id+ "] doesn't exists"));
+    }
+
+    @GetMapping("/findByUserName/{userName}")
     public User findByName(@PathVariable String userName) {
         return repository.findFirstByName(userName);
     }
@@ -32,6 +37,11 @@ public class UserController {
     @DeleteMapping
     public void deleteAll() {
         repository.deleteAll();
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable("id") String id) {
+        repository.deleteById(id);
     }
 
 }
