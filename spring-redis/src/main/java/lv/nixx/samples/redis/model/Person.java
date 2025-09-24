@@ -17,7 +17,11 @@ public class Person implements Serializable {
 
     @Id
     private Long personId;
+
     private String name;
+    private String surname;
+
     private LocalDate dateOfBirth;
+    private Gender gender;
 
 }
