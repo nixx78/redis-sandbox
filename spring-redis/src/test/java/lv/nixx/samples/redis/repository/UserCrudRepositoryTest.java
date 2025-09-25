@@ -10,15 +10,15 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-class UserRepositoryTest {
+class UserCrudRepositoryTest {
 
     @Autowired
-    UserRepository userRepository;
+    UserCrudRepository userCrudRepository;
 
     @Test
     void crudOperationsTest() {
 
-        userRepository.saveAll(List.of(new User()
+        userCrudRepository.saveAll(List.of(new User()
                         .setId("UserId.1")
                         .setName("Name1")
                         .setEmail("name1@email.com"),
@@ -28,7 +28,7 @@ class UserRepositoryTest {
                         .setEmail("name2@email.com")
         ));
 
-        User user = userRepository.findById("UserId.1").orElse(null);
+        User user = userCrudRepository.findById("UserId.1").orElse(null);
 
         assertThat(user).usingRecursiveComparison().isEqualTo(
                 new User()
@@ -37,7 +37,7 @@ class UserRepositoryTest {
                         .setEmail("name1@email.com")
         );
 
-        User firstByEmail = userRepository.findFirstByEmail("name2@email.com");
+        User firstByEmail = userCrudRepository.findFirstByEmail("name2@email.com");
         assertThat(firstByEmail).usingRecursiveComparison().isEqualTo(
                 new User()
                         .setId("UserId.2")
