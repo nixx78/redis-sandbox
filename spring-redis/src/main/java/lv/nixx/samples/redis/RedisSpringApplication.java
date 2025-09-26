@@ -3,9 +3,7 @@ package lv.nixx.samples.redis;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-//TODO https://redis.io/learn/develop/java/redis-and-spring-course/lesson_6
-
-//TODO https://redis.io/learn/develop/java/redis-and-spring-course/lesson_7 -> Create domain Photo
+//TODO Реализовать управление подсказками
 @SpringBootApplication
 public class RedisSpringApplication {
 

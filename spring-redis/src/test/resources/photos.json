@@ -1,0 +1,182 @@
+[
+  {
+    "id": "1",
+    "filename": "portrait_anna.jpg",
+    "genre": "PORTRAIT",
+    "keywords": ["woman", "smile", "studio"],
+    "place": "Berlin",
+    "rating": 4.7,
+    "captureDateTime": 1745627520000
+  },
+  {
+    "id": "2",
+    "filename": "landscape_alps.jpg",
+    "genre": "LANDSCAPE",
+    "keywords": ["mountains", "snow", "sunset"],
+    "place": "Swiss Alps",
+    "rating": 4.9,
+    "captureDateTime": 1744773000000
+  },
+  {
+    "id": "3",
+    "filename": "street_tokyo.jpg",
+    "genre": "STREET",
+    "keywords": ["night", "neon", "city"],
+    "place": "Tokyo",
+    "rating": 4.6,
+    "captureDateTime": 1741452300000
+  },
+  {
+    "id": "4",
+    "filename": "architecture_paris.jpg",
+    "genre": "ARCHITECTURE",
+    "keywords": ["Eiffel Tower", "landmark", "iron"],
+    "place": "Paris",
+    "rating": 4.8,
+    "captureDateTime": 1739548800000
+  },
+  {
+    "id": "5",
+    "filename": "nature_forest.jpg",
+    "genre": "NATURE",
+    "keywords": ["forest", "trees", "green"],
+    "place": "Black Forest",
+    "rating": 4.3,
+    "captureDateTime": 1737726600000
+  },
+  {
+    "id": "6",
+    "filename": "abstract_colors.jpg",
+    "genre": "ABSTRACT",
+    "keywords": ["colors", "shapes", "modern"],
+    "place": "New York",
+    "rating": 3.9,
+    "captureDateTime": 1735061700000
+  },
+  {
+    "id": "7",
+    "filename": "portrait_john.jpg",
+    "genre": "PORTRAIT",
+    "keywords": ["man", "beard", "outdoor"],
+    "place": "London",
+    "rating": 4.4,
+    "captureDateTime": 1732183200000
+  },
+  {
+    "id": "8",
+    "filename": "landscape_desert.jpg",
+    "genre": "LANDSCAPE",
+    "keywords": ["desert", "sand", "sun"],
+    "place": "Sahara",
+    "rating": 4.1,
+    "captureDateTime": 1729776300000
+  },
+  {
+    "id": "9",
+    "filename": "street_newyork.jpg",
+    "genre": "STREET",
+    "keywords": ["taxi", "skyscraper", "busy"],
+    "place": "New York",
+    "rating": 4.5,
+    "captureDateTime": 1726436400000
+  },
+  {
+    "id": "10",
+    "filename": "architecture_rome.jpg",
+    "genre": "ARCHITECTURE",
+    "keywords": ["colosseum", "ancient", "stone"],
+    "place": "Rome",
+    "rating": 4.9,
+    "captureDateTime": 1723767600000
+  },
+  {
+    "id": "11",
+    "filename": "nature_waterfall.jpg",
+    "genre": "NATURE",
+    "keywords": ["waterfall", "river", "mist"],
+    "place": "Iceland",
+    "rating": 4.7,
+    "captureDateTime": 1721080200000
+  },
+  {
+    "id": "12",
+    "filename": "abstract_lines.jpg",
+    "genre": "ABSTRACT",
+    "keywords": ["lines", "minimal", "pattern"],
+    "place": "Amsterdam",
+    "rating": 4.0,
+    "captureDateTime": 1718614500000
+  },
+  {
+    "id": "13",
+    "filename": "portrait_child.jpg",
+    "genre": "PORTRAIT",
+    "keywords": ["child", "innocence", "smile"],
+    "place": "Warsaw",
+    "rating": 4.8,
+    "captureDateTime": 1716615000000
+  },
+  {
+    "id": "14",
+    "filename": "landscape_ocean.jpg",
+    "genre": "LANDSCAPE",
+    "keywords": ["ocean", "sunset", "waves"],
+    "place": "California",
+    "rating": 4.6,
+    "captureDateTime": 1714171500000
+  },
+  {
+    "id": "15",
+    "filename": "street_havana.jpg",
+    "genre": "STREET",
+    "keywords": ["car", "colorful", "old"],
+    "place": "Havana",
+    "rating": 4.3,
+    "captureDateTime": 1711549500000
+  },
+  {
+    "id": "16",
+    "filename": "architecture_dubai.jpg",
+    "genre": "ARCHITECTURE",
+    "keywords": ["skyscraper", "modern", "glass"],
+    "place": "Dubai",
+    "rating": 4.5,
+    "captureDateTime": 1709008200000
+  },
+  {
+    "id": "17",
+    "filename": "nature_flowers.jpg",
+    "genre": "NATURE",
+    "keywords": ["flowers", "field", "spring"],
+    "place": "Provence",
+    "rating": 4.2,
+    "captureDateTime": 1706325000000
+  },
+  {
+    "id": "18",
+    "filename": "abstract_shadow.jpg",
+    "genre": "ABSTRACT",
+    "keywords": ["shadow", "contrast", "blackwhite"],
+    "place": "Berlin",
+    "rating": 3.8,
+    "captureDateTime": 1703704200000
+  },
+  {
+    "id": "19",
+    "filename": "portrait_couple.jpg",
+    "genre": "PORTRAIT",
+    "keywords": ["couple", "love", "outdoor"],
+    "place": "Prague",
+    "rating": 4.7,
+    "captureDateTime": 1701420000000
+  },
+  {
+    "id": "20",
+    "filename": "landscape_lake.jpg",
+    "genre": "LANDSCAPE",
+    "keywords": ["lake", "reflection", "mountains"],
+    "place": "Canada",
+    "rating": 4.9,
+    "captureDateTime": 1697240700000
+  }
+]
