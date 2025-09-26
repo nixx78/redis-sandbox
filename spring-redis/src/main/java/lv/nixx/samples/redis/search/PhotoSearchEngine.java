@@ -5,9 +5,9 @@ import lv.nixx.samples.redis.search.model.Photo;
 import lv.nixx.samples.redis.search.model.PhotoSearchRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import redis.clients.jedis.JedisPooled;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.search.SearchProtocol;
 
 import java.time.ZoneOffset;
@@ -18,15 +18,10 @@ public class PhotoSearchEngine {
 
     private final static Logger log = LoggerFactory.getLogger(PhotoSearchEngine.class);
 
-    private final JedisPooled jedis;
+    private final JedisPool jedisPool;
 
-    public PhotoSearchEngine(@Value("${spring.redis.host}") String host,
-                             @Value("${spring.redis.port}") Integer port
-    ) {
-
-        this.jedis = new JedisPooled(host, port);
-
-        log.info("Jedis client for search created: {}", this.jedis.info("Server"));
+    public PhotoSearchEngine(JedisPool jedisPool) {
+        this.jedisPool = jedisPool;
     }
 
     public Collection<Photo> search(PhotoSearchRequest request) {
@@ -63,7 +58,11 @@ public class PhotoSearchEngine {
 
         String queryAsString = query.toString();
         log.info("Query from Redis using string [{}]", queryAsString);
-        Object result = jedis.sendCommand(SearchProtocol.SearchCommand.SEARCH, "photo-idx", queryAsString);
+
+        Object result;
+        try (Jedis jedis = jedisPool.getResource()) {
+            result = jedis.sendCommand(SearchProtocol.SearchCommand.SEARCH, "photo-idx", queryAsString);
+        }
 
         List<Object> rawResult = (List<Object>) result;
         List<Photo> photos = new ArrayList<>();
