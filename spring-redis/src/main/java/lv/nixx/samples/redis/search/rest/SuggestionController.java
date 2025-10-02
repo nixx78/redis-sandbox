@@ -1,6 +1,7 @@
 package lv.nixx.samples.redis.search.rest;
 
-import lv.nixx.samples.redis.search.SuggestionService;
+import lv.nixx.samples.redis.search.model.IndexField;
+import lv.nixx.samples.redis.search.service.SuggestionIndexService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -9,20 +10,27 @@ import java.util.Collection;
 @RequestMapping("/suggestion")
 public class SuggestionController {
 
-    private final SuggestionService suggestionService;
+    private final SuggestionIndexService suggestionIndexService;
 
-    public SuggestionController(SuggestionService suggestionService) {
-        this.suggestionService = suggestionService;
+    public SuggestionController(SuggestionIndexService suggestionIndexService) {
+        this.suggestionIndexService = suggestionIndexService;
     }
 
     @PostMapping("/index")
-    public void createIndexes() {
-        suggestionService.reindex();
+    public String createIndex(@RequestParam IndexField indexField) {
+        long indexFieldCount = suggestionIndexService.createIndex(indexField);
+
+        return "Index created for field [%s] size [%s]".formatted(indexField, indexFieldCount);
     }
 
-    @GetMapping("/{word}")
-    public Collection<String> getSuggestion(@PathVariable String word) {
-        return suggestionService.getSuggestion(word);
+    @DeleteMapping("/index")
+    public void deleteIndex(@RequestParam IndexField indexField) {
+        suggestionIndexService.deleteIndex(indexField);
+    }
+
+    @GetMapping
+    public Collection<String> getSuggestion(@RequestParam IndexField indexField, @RequestParam String word) {
+        return suggestionIndexService.getSuggestion(indexField, word);
     }
 
 }
