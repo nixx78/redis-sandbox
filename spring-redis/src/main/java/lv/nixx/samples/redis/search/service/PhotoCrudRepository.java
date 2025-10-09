@@ -1,4 +1,4 @@
-package lv.nixx.samples.redis.search;
+package lv.nixx.samples.redis.search.service;
 
 import lv.nixx.samples.redis.search.model.Photo;
 import org.springframework.data.repository.CrudRepository;

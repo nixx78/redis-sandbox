@@ -1,7 +1,7 @@
 package lv.nixx.samples.redis.search.rest;
 
-import lv.nixx.samples.redis.search.PhotoCrudRepository;
 import lv.nixx.samples.redis.search.model.Photo;
+import lv.nixx.samples.redis.search.service.PhotoCrudRepository;
 import lv.nixx.samples.redis.search.service.PhotoUploadService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

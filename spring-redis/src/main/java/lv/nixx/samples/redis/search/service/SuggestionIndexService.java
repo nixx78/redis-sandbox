@@ -16,7 +16,7 @@ public class SuggestionIndexService {
 
     private final static Logger log = LoggerFactory.getLogger(SuggestionIndexService.class);
 
-    public static final String PHOTO = "photo";
+    public static final String COLLECTION = "photo";
     public static final String SUGGEST = ":suggest:";
 
     private final JedisPool jedisPool;
@@ -28,19 +28,19 @@ public class SuggestionIndexService {
     public long createIndex(IndexField indexField) {
         try (Jedis jedis = jedisPool.getResource()) {
 
-            String field = indexField.name();
+            String fieldToIndex = indexField.name();
 
-            Collection<String> elemsInSet = jedis.smembers(PHOTO);
+            Collection<String> elemsInSet = jedis.smembers(COLLECTION);
 
             Collection<String> valuesForIndex = new HashSet<>();
 
             for (String id : elemsInSet) {
-                String p = jedis.hget(PHOTO + ":" + id, field);
+                String p = jedis.hget(COLLECTION + ":" + id, fieldToIndex);
                 valuesForIndex.add(p);
             }
 
             for (String p : valuesForIndex) {
-                jedis.sendCommand(SearchProtocol.SearchCommand.SUGADD, PHOTO + SUGGEST + field, p, "1");
+                jedis.sendCommand(SearchProtocol.SearchCommand.SUGADD, COLLECTION + SUGGEST + fieldToIndex, p, "1");
             }
 
             return createIndex(indexField, valuesForIndex);
@@ -53,10 +53,10 @@ public class SuggestionIndexService {
             String field = indexField.name();
 
             for (String p : valuesForIndex) {
-                jedis.sendCommand(SearchProtocol.SearchCommand.SUGADD, PHOTO + SUGGEST + field, p, "1");
+                jedis.sendCommand(SearchProtocol.SearchCommand.SUGADD, COLLECTION + SUGGEST + field, p, "1");
             }
 
-            Long size = (Long) jedis.sendCommand(SearchProtocol.SearchCommand.SUGLEN, PHOTO + SUGGEST + field);
+            Long size = (Long) jedis.sendCommand(SearchProtocol.SearchCommand.SUGLEN, COLLECTION + SUGGEST + field);
             log.info("Suggestion index added, field: [{}] count: [{}]", field, size);
 
             return size;
@@ -65,7 +65,7 @@ public class SuggestionIndexService {
 
     public void deleteIndex(IndexField indexField) {
         try (Jedis jedis = jedisPool.getResource()) {
-            String key = PHOTO + SUGGEST + indexField.name();
+            String key = COLLECTION + SUGGEST + indexField.name();
             jedis.del(key);
 
             log.info("Suggestion index [{}] deleted", key);
@@ -74,7 +74,7 @@ public class SuggestionIndexService {
 
     public Collection<String> getSuggestion(IndexField field, String word) {
         try (Jedis jedis = jedisPool.getResource()) {
-            Collection<byte[]> o = (Collection<byte[]>) jedis.sendCommand(SearchProtocol.SearchCommand.SUGGET, PHOTO + SUGGEST + field.name(), word, "MAX", "5");
+            Collection<byte[]> o = (Collection<byte[]>) jedis.sendCommand(SearchProtocol.SearchCommand.SUGGET, COLLECTION + SUGGEST + field.name(), word, "MAX", "5");
 
             return o.stream().map(String::new).toList();
         }

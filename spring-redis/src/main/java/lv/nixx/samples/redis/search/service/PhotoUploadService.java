@@ -2,7 +2,6 @@ package lv.nixx.samples.redis.search.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lv.nixx.samples.redis.search.PhotoCrudRepository;
 import lv.nixx.samples.redis.search.model.IndexField;
 import lv.nixx.samples.redis.search.model.Photo;
 import org.slf4j.Logger;

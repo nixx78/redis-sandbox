@@ -10,10 +10,15 @@
 * Redis Management
 
 ## Основные примеры использования - Spring Boot Starter Redis
+
+### CRUD Операции
 * Использование связанных объектов User(1) -> Role(n)
-* Поиск данных по полю (использование @Indexed)
 * Хранение данных в JSON (Picture)
 * Получение данных при помощи Paging (UserPagingRepository)
+
+### Операции поиска
+* Поиск данных по полю (использование @Indexed)
+* Получение suggestion по полю
 
 ## Работа с Redis используя библиотеку Jedis
 * Операции с различными структурами данных
@@ -36,8 +41,11 @@ FT._LIST
 ### Посмотреть схему индекса:
 FT.INFO photo-idx
 
-## Пример поиска
-FT.SEARCH photo-idx "@genre:{NATURE}" 
+## Пример поиска по индексированным полям
+* Используя команду: FT.SEARCH photo-idx "@genre:{NATURE}"
+* Из Java code: PhotoSearchEngine
+
+
 
 
 

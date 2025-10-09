@@ -29,7 +29,7 @@ public class SuggestionController {
     }
 
     @GetMapping
-    public Collection<String> getSuggestion(@RequestParam IndexField indexField, @RequestParam String word) {
+    public Collection<String> getSuggestion(@RequestParam IndexField indexField, @RequestParam(required = false) String word) {
         return suggestionIndexService.getSuggestion(indexField, word);
     }
 
