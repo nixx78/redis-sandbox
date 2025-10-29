@@ -1,35 +1,43 @@
 # Проект песочница Redis  
 
 ## Redis management console
+Консоль для управления структурами Redis.
 * URL http://127.0.0.1:5540
 * Connection to DB, host should be like 192.. :6379
 
-## Application Endpoints
- 
-* Application swagger endpoint: http://localhost:8080/swagger-ui.html
-* Redis Management
+## Application
+ * Application swagger endpoint: http://localhost:8080/swagger-ui.html
+ * Класс для запуска приложения: RedisSpringApplication
 
-## Основные примеры использования - Spring Boot Starter Redis
+# Основные примеры использования - Spring Boot Starter Redis
 
-### CRUD Операции
+## CRUD Операции
 * Использование связанных объектов User(1) -> Role(n)
 * Хранение данных в JSON (Picture)
 * Получение данных при помощи Paging (UserPagingRepository)
 
-### Операции поиска
+## Операции поиска
 * Поиск данных по полю (использование @Indexed)
-* Получение suggestion по полю
 
-## Работа с Redis используя библиотеку Jedis
+## Suggestions
+В проекте приведен пример получения suggestion по полю. 
+Для работы suggestion необходимо помещать поля в структуру при помощи команды SUGADD.
+Данная операция происходит при загрузке фотографий из файла, endpoint (/photo/upload).
+
+# Работа с Redis используя библиотеку Jedis
 * Операции с различными структурами данных
 * Операции с Hash
 * Операции с Stream
 * Поиск по полям индекса
 
-## Тестовые данные 
+# Тестовые данные 
 * test/resources
 
 # RediSearch
+Для того чтобы можно было искать по полям, необходимо создать индексы, пример команды указан ниже. 
+
+## Запуск Redis command line
+redis-cli
 
 ## Работа с индексами
 

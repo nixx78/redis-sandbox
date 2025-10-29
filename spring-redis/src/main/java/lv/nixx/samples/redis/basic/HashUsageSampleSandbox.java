@@ -8,6 +8,9 @@ public class HashUsageSampleSandbox {
 
     private static final String USER_1001_KEY = "user:1001";
 
+
+
+
     public static void main(String[] args) {
 
         try (Jedis jedis = new Jedis("localhost", 6379)) {

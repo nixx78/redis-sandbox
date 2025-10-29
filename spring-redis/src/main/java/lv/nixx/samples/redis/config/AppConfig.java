@@ -74,7 +74,7 @@ public class AppConfig {
     @Bean
     public GroupedOpenApi searchApi() {
         return GroupedOpenApi.builder()
-                .group("search")
+                .group("photos-search-suggestions")
                 .packagesToScan("lv.nixx.samples.redis.search.rest")
                 .build();
     }
