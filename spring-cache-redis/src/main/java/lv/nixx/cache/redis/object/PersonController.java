@@ -1,22 +1,26 @@
 package lv.nixx.cache.redis.object;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/person")
+@RequiredArgsConstructor
 public class PersonController {
 
     private final PersonService personService;
 
-    public PersonController(PersonService personService) {
-        this.personService = personService;
+    @GetMapping
+    public Collection<Person> getAllPersons() {
+        return personService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Map<String, Serializable> callSlowService(@PathVariable String id) {
+    public Map<String, Serializable> getPersonById(@PathVariable String id) {
 
         long st = System.currentTimeMillis();
         Person person = personService.getValueById(id);

@@ -7,6 +7,7 @@ import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -17,9 +18,13 @@ public class PersonService {
 
     private static final Logger log = LoggerFactory.getLogger(PersonService.class);
 
-    private static final String CACHE_NAME = "person-cache";
+    public static final String CACHE_NAME = "person-cache";
 
-    private final Map<String, Person> storage = new HashMap<>();
+    private final Map<String, Person> storage = new HashMap<>(Map.of(
+            "id1", new Person("id1", "Name1"),
+            "id2", new Person("id2", "Name2"),
+            "id3", new Person("id3", "Name3")
+    ));
 
     @CachePut(value = CACHE_NAME, key = "#result.id")
     public Person add(Person newPerson) {
@@ -44,9 +49,14 @@ public class PersonService {
     @Cacheable(value = CACHE_NAME, key = "#id")
     public Person getValueById(String id) {
         try {
-            TimeUnit.SECONDS.sleep(5);
             Person v = storage.get(id);
-            log.info("Slow service person service, response, id [{}] value [{}]", id, v);
+            if (v == null) {
+                throw new IllegalArgumentException("Person with id [%s] not found".formatted(id));
+            }
+
+            TimeUnit.SECONDS.sleep(2);
+
+            log.info("Slow Person service, response, id [{}] value [{}]", id, v);
             return v;
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
@@ -58,4 +68,7 @@ public class PersonService {
         log.info("Clear cache");
     }
 
+    public Collection<Person> getAll() {
+        return storage.values();
+    }
 }
