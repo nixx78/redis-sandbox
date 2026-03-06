@@ -1,18 +1,21 @@
 package lv.nixx.cache.redis.string;
 
+import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
 @RestController
 @RequestMapping("/keyvalue")
+@RequiredArgsConstructor
 public class ControllerForSlowService {
 
-    private final MySlowService mySlowService;
+    private static final Logger log = LoggerFactory.getLogger(ControllerForSlowService.class);
 
-    public ControllerForSlowService(MySlowService mySlowService) {
-        this.mySlowService = mySlowService;
-    }
+    private final MySlowService mySlowService;
+    private final ServiceWithCustomManager serviceWithCustomManager;
 
     @GetMapping("/{id}")
     public Map<String, Object> callSlowService(@PathVariable String id) {
@@ -44,6 +47,12 @@ public class ControllerForSlowService {
     @DeleteMapping("clearCache")
     public void clearCache() {
         mySlowService.clearCache();
+    }
+
+    @GetMapping("/customCacheManager/{id}")
+    public String callServiceWithCustomManager(@PathVariable String id) {
+        log.info("Method: callServiceWithCustomManager() call, id [{}]", id);
+        return serviceWithCustomManager.getValueById(id);
     }
 
 }

@@ -1,9 +1,11 @@
-# spring-cache-redis sample project
+# spring-cache-redis & Caffeine sample project
 
 Проект песочница для изучения работы с Spring - Cache
 
+## Использования кеша на Redis
 * Должен быть запущен Redis (папка /docker)
-* Swagger endpoint http://localhost:8080/swagger-ui.html
+
+## Использования внутреннего кеша - Caffeine
 
 ## Основные случаи использования
 * Добавление сущности
@@ -12,3 +14,5 @@
 * Полная очистка кеша (без удалений сущностей)
 * Загрузка данных напрямую в кеш
 
+
+* Swagger endpoint http://localhost:8080/swagger-ui.html

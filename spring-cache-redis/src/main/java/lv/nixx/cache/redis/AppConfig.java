@@ -1,15 +1,19 @@
 package lv.nixx.cache.redis;
 
+import com.github.benmanes.caffeine.cache.Caffeine;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.caffeine.CaffeineCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 @Configuration
 @EnableCaching
@@ -25,6 +29,7 @@ public class AppConfig {
     }
 
     @Bean
+    @Primary
     public CacheManager cacheManager(RedisConnectionFactory connectionFactory) {
         RedisCacheConfiguration cacheConfig = RedisCacheConfiguration.defaultCacheConfig()
                 .entryTtl(Duration.ofSeconds(90));
@@ -32,6 +37,21 @@ public class AppConfig {
         return RedisCacheManager.builder(connectionFactory)
                 .cacheDefaults(cacheConfig)
                 .build();
+    }
+
+    @Bean
+    public CacheManager internalCacheManager() {
+
+        CaffeineCacheManager manager = new CaffeineCacheManager("cache-in-custom-manager");
+        manager.setCaffeine(
+                Caffeine.newBuilder()
+                        .maximumSize(10_000)
+                        .expireAfterWrite(100, TimeUnit.SECONDS)
+                        .recordStats()
+
+        );
+
+        return manager;
     }
 
 }
