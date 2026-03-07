@@ -15,7 +15,6 @@ public class ControllerForSlowService {
     private static final Logger log = LoggerFactory.getLogger(ControllerForSlowService.class);
 
     private final MySlowService mySlowService;
-    private final ServiceWithCustomManager serviceWithCustomManager;
 
     @GetMapping("/{id}")
     public Map<String, Object> callSlowService(@PathVariable String id) {
@@ -47,12 +46,6 @@ public class ControllerForSlowService {
     @DeleteMapping("clearCache")
     public void clearCache() {
         mySlowService.clearCache();
-    }
-
-    @GetMapping("/customCacheManager/{id}")
-    public String callServiceWithCustomManager(@PathVariable String id) {
-        log.info("Method: callServiceWithCustomManager() call, id [{}]", id);
-        return serviceWithCustomManager.getValueById(id);
     }
 
 }

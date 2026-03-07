@@ -30,7 +30,7 @@ public class AppConfig {
 
     @Bean
     @Primary
-    public CacheManager cacheManager(RedisConnectionFactory connectionFactory) {
+    public CacheManager redisCacheManager(RedisConnectionFactory connectionFactory) {
         RedisCacheConfiguration cacheConfig = RedisCacheConfiguration.defaultCacheConfig()
                 .entryTtl(Duration.ofSeconds(90));
 
@@ -40,9 +40,9 @@ public class AppConfig {
     }
 
     @Bean
-    public CacheManager internalCacheManager() {
+    public CaffeineCacheManager coffeineCacheManager() {
 
-        CaffeineCacheManager manager = new CaffeineCacheManager("cache-in-custom-manager");
+        CaffeineCacheManager manager = new CaffeineCacheManager();
         manager.setCaffeine(
                 Caffeine.newBuilder()
                         .maximumSize(10_000)
