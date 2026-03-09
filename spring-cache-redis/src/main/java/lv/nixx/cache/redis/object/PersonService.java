@@ -34,6 +34,13 @@ public class PersonService {
         return new Person(id, newPerson.getName());
     }
 
+    public Person loadByKey(String key) {
+        Person p = new Person(key, key + ":" + System.currentTimeMillis());
+        storage.put(key, p);
+
+        return p;
+    }
+
     @CacheEvict(value = CACHE_NAME, key = "#updatedPerson.id")
     public Person updateEntity(Person updatedPerson) {
         storage.put(updatedPerson.getId(), updatedPerson);

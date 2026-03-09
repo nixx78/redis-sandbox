@@ -1,8 +1,6 @@
 package lv.nixx.cache.redis.string;
 
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -11,8 +9,6 @@ import java.util.Map;
 @RequestMapping("/keyvalue")
 @RequiredArgsConstructor
 public class ControllerForSlowService {
-
-    private static final Logger log = LoggerFactory.getLogger(ControllerForSlowService.class);
 
     private final MySlowService mySlowService;
 

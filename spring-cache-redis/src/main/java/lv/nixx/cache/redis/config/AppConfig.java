@@ -1,6 +1,9 @@
-package lv.nixx.cache.redis;
+package lv.nixx.cache.redis.config;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
+import com.github.benmanes.caffeine.cache.LoadingCache;
+import lv.nixx.cache.redis.object.Person;
+import lv.nixx.cache.redis.object.PersonService;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.caffeine.CaffeineCacheManager;
@@ -53,5 +56,21 @@ public class AppConfig {
 
         return manager;
     }
+
+    @Bean
+    public LoadingCache<String, Person> userCache(PersonService personService) {
+
+        return Caffeine.newBuilder()
+                .maximumSize(10_000)
+                .expireAfterWrite(60, TimeUnit.SECONDS)
+                .recordStats()
+
+                // CacheLoader
+                .build(key -> {
+                    System.out.println("Loading user from service: " + key);
+                    return personService.loadByKey(key);
+                });
+    }
+
 
 }
